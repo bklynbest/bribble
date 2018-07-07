@@ -22,7 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 
 gem 'devise', '~> 4.3'
-gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'simple_form', '~> 3.5'
 gem "mini_magick"
 gem 'impressionist', '~> 1.6'

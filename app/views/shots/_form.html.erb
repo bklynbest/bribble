@@ -1,14 +1,43 @@
+<div class= "container">
+  <div class= "row" width="50%">
+    <div class= "col-md-auto">
+<%= form_for(@shot) do |f| %>
+  <% if @shot.errors.any? %> 
+    <% @shot.errors.full_messages.each do |error| %>
+     <div class= 'alert alert-danger' role='alert'>
+       <p class="alert"><%= error %></p>
+     </div>
+    <% end %>
+  <% end %>
+  
+  <%# unless @shot.user_shot.blank? %>
+    <%#= image_tag (@shot.user_shot_url), id: "previewImage" %>
+    <%# end %>
+  
+   <output id="list"></output>
+    <div id="drop_zone">Drag your shot here</div>
+    <br />
+    
+        <%#= f.input :user_shot, label: false, input_html: { class: "file-input", type: "file" }, wrapper: false, label_html: { class: "file-label" } %>
 
-<%= simple_form_for(@shot) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
- 
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  
+  <div class= "form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class:"form-control" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn login btn-primary" %>
+  <div class="form-group">
+    <%= f.button :submit, class: "btn login btn-primary login" %>
   </div>
+  <%= link_to 'Show', @shot %>  |  
+  <%= link_to 'Back', shots_path %>
+
 <% end %>
+
+</div>
+</div>
+</div>
