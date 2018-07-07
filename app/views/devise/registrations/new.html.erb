@@ -1,0 +1,55 @@
+<div class="card" style="width: 35rem;">
+  <div class="card-body">
+    <h3 class="card-title text-center">Sign Up</h3>
+  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+	  
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class:"form-control", placeholder: 'Enter Name Please', autocomplete: "name", required: true %>
+      </div>
+    </li>
+    
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control", placeholder: "Enter Email Please", 
+                          autocomplete: "email", autofocus: true, 
+                          hint: "We will never share your email with anyone", required: true %>
+      </div>
+    </li>
+    
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Enter Password" %>
+      </div>
+    </li>
+    
+    <li class="list-group-item">
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm" %>
+      </div>
+    </li>
+  </ul>
+  <div class="card-body">
+    <div class="form-group">
+      <%= f.submit "Sign Up", class: "btn btn-primary btn-block" %>
+      
+    </div>
+    
+    <%= render "devise/shared/links" %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
