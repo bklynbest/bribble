@@ -1,3 +1,11 @@
-// Place all the styles related to the Shots controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.shot-grid-item {
+  width: 20em;
+  height: 20em;
+  
+  .image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+}
+

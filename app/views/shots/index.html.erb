@@ -1,31 +1,23 @@
-
-
-<h1>Shots</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class= "container">
+  <div class= 'shots'>
     <% @shots.each do |shot| %>
-      <tr>
-        <td><%= shot.title %></td>
-        <td><%= shot.description %></td>
-        <td><%= shot.user.name %></td>
-        <td><%= link_to 'Show', shot %></td>
-        <td><%= link_to 'Edit', edit_shot_path(shot) %></td>
-        <td><%= link_to 'Destroy', shot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class= 'col-md-4'>
+        <div class= "shot-grid-item">
+          <div class="shot-wrapper">
+            <%= link_to shot, class: "shot" do %>
+            <%= image_tag(shot.user_shot_url, class: "image", width:'100%') %>
+            <div class="shot-data">
+              <h3 class="shot-title"><%= shot.title %></h3>
+              <div class="shot-description"> <%= truncate( shot.description, length: 60) %></div>
+              <div class="shot-time"> <%= time_ago_in_words(shot.created_at) %> ago </div>
+            <% end %>
+            </div>
+      <%= link_to 'delete', shot, method: :delete, data: {confirm: 'u dead ass' } %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
 
-<%= link_to 'New Shot', new_shot_path, class: 'btn btn-primary login' %>

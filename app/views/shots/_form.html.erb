@@ -1,24 +1,29 @@
 <div class= "container">
   <div class= "row" width="50%">
     <div class= "col-md-auto">
+      
+
 <%= form_for(@shot) do |f| %>
   <% if @shot.errors.any? %> 
     <% @shot.errors.full_messages.each do |error| %>
-     <div class= 'alert alert-danger' role='alert'>
+     <div class= 'alert alert-danger' role='alert'> 
        <p class="alert"><%= error %></p>
      </div>
     <% end %>
   <% end %>
   
-  <%# unless @shot.user_shot.blank? %>
-    <%#= image_tag (@shot.user_shot_url), id: "previewImage" %>
-    <%# end %>
-  
+  <% unless @shot.user_shot.blank? %>
+    <%= image_tag (@shot.user_shot_url), id: "previewImage" %>
+  <% end %>
+  <!--
    <output id="list"></output>
     <div id="drop_zone">Drag your shot here</div>
     <br />
+    -->
     
-        <%#= f.input :user_shot, label: false, input_html: { class: "file-input", type: "file" }, wrapper: false, label_html: { class: "file-label" } %>
+               
+        <%= f.file_field :user_shot, class:"form-control-file", type:"file", wrapper: false, label_html: {class: "file-label"}  %>
+      <br/>
 
   <div class="form-group">
     <%= f.label :title %>

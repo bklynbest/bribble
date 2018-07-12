@@ -1,10 +1,10 @@
 class ShotsController < ApplicationController
   before_action :set_shot, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
   # GET /shots
   # GET /shots.json
   def index
-    @shots = Shot.all
+    @shots = Shot.all.order('created_at DESC')
   end
 
   # GET /shots/1
@@ -69,6 +69,6 @@ class ShotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shot_params
-      params.require(:shot).permit(:title, :description, :user_id)
+      params.require(:shot).permit(:title, :description, :user_shot)
     end
 end
